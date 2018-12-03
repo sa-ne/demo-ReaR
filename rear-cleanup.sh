@@ -10,4 +10,3 @@ rm -rf /tmp/rescue_system
 rm -rf /etc/rear
 rm -rf /var/lib/rear
 rm -rf /var/log/rear
-rm -rf /mnt/tmp/demos
