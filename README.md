@@ -13,34 +13,34 @@ Install the rear package and its dependencies by running the following command a
 
 ReaR is configured in the /etc/rear/local.conf file.
 ```
-OUTPUT=ISO												# to create a boot ISO
-OUTPUT=USB												# to create a bootable USB
-OUTPUT=PXE												# create files on PXE/NFS server
+OUTPUT=ISO				# to create a boot ISO
+OUTPUT=USB				# to create a bootable USB
+OUTPUT=PXE				# create files on PXE/NFS server
 
 OUTPUT_URL=file:///mnt/rescue/		# default = /var/lib/rear/output
-OUTPUT_URL=nfs://server/share			# mount NFS
+OUTPUT_URL=nfs://server/share		# mount NFS
 OUTPUT_URL=http:// or https://		# write (PUT) to http(s)
-OUTPUT_URL=sftp://								# use sftp
-OUTPUT_URL=rsync://								# use rsync
-OUTPUT_URL=sshfs://								# use ssh
-OUTPUT_URL=null										# do not copy (i.e. using external backup)
+OUTPUT_URL=sftp://			# use sftp
+OUTPUT_URL=rsync://			# use rsync
+OUTPUT_URL=sshfs://			# use ssh
+OUTPUT_URL=null				# do not copy (i.e. using external backup)
 
 
-BACKUP=REQUESTRESTORE							# default, prompts for restore
-BACKUP=NETFS											# internal backup method
-BACKUP=[see list below]						# support for external backup program
-BACKUP=EXTERNAL										# specify commands if not listed below
+BACKUP=REQUESTRESTORE			# default, prompts for restore
+BACKUP=NETFS				# internal backup method
+BACKUP=[see list below]			# support for external backup program
+BACKUP=EXTERNAL				# specify commands if not listed below
 
 BACKUP_URL=file:///srv/backup/		# write to file
-BACKUP_URL=nfs://srv/share				# mount and write to NFS
+BACKUP_URL=nfs://srv/share		# mount and write to NFS
 BACKUP_URL=rsync://user@host:/path	# use rsync
-BACKUP_URL=iso:///backup					# include backup on ISO
-BACKUP_URL=usb:///dev/disk				# write to USB device (i.e. external drive)
+BACKUP_URL=iso:///backup		# include backup on ISO
+BACKUP_URL=usb:///dev/disk		# write to USB device (i.e. external drive)
 BACKUP_URL=sshfs://user@host/path	# use ssh
 
-NETFS_KEEP_OLD_BACKUP_COPY=y			# internal only
-BACKUP_TYPE=incremental						# internal only
-FULLBACKUPDAY="Day"								# internal only = Mon,Tue,Wed,Thu,Fri,Sat,Sun
+NETFS_KEEP_OLD_BACKUP_COPY=y		# internal only
+BACKUP_TYPE=incremental			# internal only
+FULLBACKUPDAY="Day"			# internal only = Mon,Tue,Wed,Thu,Fri,Sat,Sun
 ```
 Supported backup methods:  CommVault Galaxy 5 (GALAXY), CommVault Galaxy 7 (GALAXY7), CommVault Galaxy 10 (GALAXY10), Symantec NetBackup (NBU), IBM Tivoli Storage Manager (TSM), EMC NetWorker/Legato (NSR),
 
