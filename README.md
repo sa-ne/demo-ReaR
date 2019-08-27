@@ -83,7 +83,8 @@ To create a rescue system, but only if the layout has changed, use this command:
 ```
 
 ### References and Resources
-* [Red Hat Documentation](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-relax-and-recover_rear)
+* [Red Hat Documentation - RHEL 7](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-relax-and-recover_rear)
+* [Red Hat Documentation - RHEL 8](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/getting-started-with-system-administration_configuring-basic-system-settings#basics-system-rescue-backup_getting-started-with-system-administration)
 * [Upstream ReaR Documentation](http://relax-and-recover.org/documentation/)
 * [Upstream ReaR FAQs](http://relax-and-recover.org/documentation/faq)
 

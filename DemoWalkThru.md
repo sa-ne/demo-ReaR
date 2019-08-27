@@ -1,7 +1,7 @@
 ## ReaR Demo WalkThru
 
 ### Requirements:
-* Minimum VM: 1vCPU x 1G mem, running RHEL 7.latest
+* Minimum VM: 1vCPU x 1G mem, running RHEL 7.latest or RHEL 8.latest
 * At least 1GB free on root filesystem for ReaR rescue image and backup tar file
 
 ### WalkThru:
