@@ -6,18 +6,20 @@ Relax-and-Recover (ReaR), a disaster recovery and system migration utility.  Rea
 
 During this process, ReaR replicates the partition layout and filesystems, prompts for restoring user and system files from the backup created by backup software, and finally installs the boot loader.
 
+### Installation
 Install the rear package and its dependencies by running the following command as root:
 ```
-	# yum install rear genisoimage syslinux
+			# yum install rear genisoimage syslinux
 ```
 
+### Configuration
 ReaR is configured in the /etc/rear/local.conf file.
-```
-OUTPUT=ISO				# to create a boot ISO
+
+>OUTPUT=ISO				# to create a boot ISO
 OUTPUT=USB				# to create a bootable USB
 OUTPUT=PXE				# create files on PXE/NFS server
 
-OUTPUT_URL=file:///mnt/rescue/		# default = /var/lib/rear/output
+>OUTPUT_URL=file:///mnt/rescue/		# default = /var/lib/rear/output
 OUTPUT_URL=nfs://server/share		# mount NFS
 OUTPUT_URL=http:// or https://		# write (PUT) to http(s)
 OUTPUT_URL=sftp://			# use sftp
@@ -26,29 +28,30 @@ OUTPUT_URL=sshfs://			# use ssh
 OUTPUT_URL=null				# do not copy (i.e. using external backup)
 
 
-BACKUP=REQUESTRESTORE			# default, prompts for restore
+>BACKUP=REQUESTRESTORE			# default, prompts for restore
 BACKUP=NETFS				# internal backup method
 BACKUP=[see list below]			# support for external backup program
 BACKUP=EXTERNAL				# specify commands if not listed below
 
-BACKUP_URL=file:///srv/backup/		# write to file
+>BACKUP_URL=file:///srv/backup/		# write to file
 BACKUP_URL=nfs://srv/share		# mount and write to NFS
 BACKUP_URL=rsync://user@host:/path	# use rsync
 BACKUP_URL=iso:///backup		# include backup on ISO
 BACKUP_URL=usb:///dev/disk		# write to USB device (i.e. external drive)
 BACKUP_URL=sshfs://user@host/path	# use ssh
 
-NETFS_KEEP_OLD_BACKUP_COPY=y		# internal only
+>NETFS_KEEP_OLD_BACKUP_COPY=y		# internal only
 BACKUP_TYPE=incremental			# internal only
 FULLBACKUPDAY="Day"			# internal only = Mon,Tue,Wed,Thu,Fri,Sat,Sun
-```
+
 Supported backup methods:  CommVault Galaxy 5 (GALAXY), CommVault Galaxy 7 (GALAXY7), CommVault Galaxy 10 (GALAXY10), Symantec NetBackup (NBU), IBM Tivoli Storage Manager (TSM), EMC NetWorker/Legato (NSR),
 
 Full example conf file at: /usr/share/rear/conf/default.conf
 
+### Notes
 How to create a rescue system with verbose output:
 ```
-	# rear -v mkrescue
+ 			# rear -v mkrescue
 ```
 To make ReaR create a rescue system at 22:00 every weekday, add to the /etc/crontab file:
 >	0 22 * * 1-5 root /usr/sbin/rear mkrescue
@@ -64,24 +67,24 @@ To perform a restore or migration:
 ReaR includes a built-in, or internal, backup method. This method is fully integrated with ReaR
 To create a rescue system only, run:
 ```
-#  rear mkrescue
+			#  rear mkrescue
 ```
 To create a backup only, run:
 ```
-# rear mkbackuponly
+			# rear mkbackuponly
 ```
 To create a rescue system and a backup, run:
 ```
-# rear mkbackup
+			# rear mkbackup
 ```
 To create a rescue system, but only if the layout has changed, use this command:
 ```
-# rear checklayout || rear mkrescue
+			# rear checklayout || rear mkrescue
 ```
 
-[Red Hat Documentation](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-relax-and-recover_rear)
-
-[Upstream ReaR Documentation](http://relax-and-recover.org/documentation/)
-
-[Upstream ReaR FAQs](http://relax-and-recover.org/documentation/faq)
+### References and Resources
+* [Red Hat Documentation - RHEL 7](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/7/html/system_administrators_guide/ch-relax-and-recover_rear)
+* [Red Hat Documentation - RHEL 8](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/8/html/configuring_basic_system_settings/getting-started-with-system-administration_configuring-basic-system-settings#basics-system-rescue-backup_getting-started-with-system-administration)
+* [Upstream ReaR Documentation](http://relax-and-recover.org/documentation/)
+* [Upstream ReaR FAQs](http://relax-and-recover.org/documentation/faq)
 
